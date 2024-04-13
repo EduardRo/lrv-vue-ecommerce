@@ -12,7 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('countries', function (Blueprint $table) {
-            $table->id();
+            $table->string(column: 'code', length: 3)->primary();
+            $table->string(column: 'name', length: 255);
+            $table->string(column: 'currency', length: 3);
+            $table->jsonb(column: 'state')->nullable();
+
             $table->timestamps();
         });
     }
